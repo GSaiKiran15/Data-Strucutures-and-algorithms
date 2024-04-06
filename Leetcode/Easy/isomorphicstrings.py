@@ -1,16 +1,20 @@
-s = "egg"
-t = "add"
+s = "badc"
+t = "baba"
 s_map = {}
 t_map = {}
-for i, j in zip(s,t):
-    if i in s_map:
-        s_map[i] += 1
-    else:
-        s_map[i] = 1
-    if j in t_map:
-        t_map[j] += 1
-    else:
-        t_map[j] = 1
-count = 0
-for u in s_map:
-    print(s_map[u])
+
+for c1, c2 in zip(s, t):
+    if ((c1 in s_map and s_map[c1] != c2) or (c2 in t_map and t_map[c2] != c1)):
+        print(False)
+    s_map[c1] = c2
+    t_map[c2] = c1
+print(True)
+
+for i in range(len(s)):
+    if s[i] not in s_map:
+        s_map[s[i]] = t[i]
+    if t[i] not in t_map:
+        t_map[t[i]] = s[i]
+    if t[i] != s_map[s[i]] or s[i] != t_map[t[i]]:
+            print(False)
+print(True)
